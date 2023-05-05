@@ -7,7 +7,7 @@
       // animate
       $("html, body").animate(
         {
-          scrollTop: $(target).offset().top
+          scrollTop: $(target).offset().top,
         },
         1000
       );
@@ -21,18 +21,18 @@
       // initialize the plugin
       rules: {
         name: {
-          required: true
+          required: true,
         },
         email: {
           required: true,
-          email: true
+          email: true,
         },
         message: {
-          required: true
+          required: true,
         },
         subject: {
-          required: true
-        }
+          required: true,
+        },
       },
       submitHandler: function (form) {
         // sending value with ajax request
@@ -47,7 +47,7 @@
           }
         );
         return false;
-      }
+      },
     });
   }
 
@@ -81,7 +81,7 @@
 
             mcResp.find("p").fadeOut(10000);
           }
-        }
+        },
       });
     });
   }
@@ -94,7 +94,7 @@
       removalDelay: 160,
       preloader: true,
 
-      fixedContentPos: false
+      fixedContentPos: false,
     });
   }
 
@@ -116,8 +116,8 @@
         closeOnContentClick: true,
         closeBtnInside: false,
         gallery: {
-          enabled: true
-        }
+          enabled: true,
+        },
       });
     });
   }
@@ -209,7 +209,7 @@
       boxClass: "wow", // animated element css class (default is wow)
       animateClass: "animated", // animation css class (default is animated)
       mobile: true, // trigger animations on mobile devices (default is true)
-      live: true // act on asynchronously loaded content (default is true)
+      live: true, // act on asynchronously loaded content (default is true)
     });
     wow.init();
   }
@@ -263,8 +263,8 @@
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
         autoplay: {
-          delay: 5000
-        }
+          delay: 5000,
+        },
       });
       let testimonialsMeta = new Swiper("#testimonials-one__meta", {
         slidesPerView: 1,
@@ -273,8 +273,8 @@
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
         autoplay: {
-          delay: 5000
-        }
+          delay: 5000,
+        },
       });
 
       let testimonialsCarousel = new Swiper("#testimonials-one__carousel", {
@@ -284,20 +284,24 @@
         mousewheel: true,
         slidesPerView: 1,
         autoplay: {
-          delay: 5000
+          delay: 5000,
         },
         pagination: {
           el: "#testimonials-one__swiper-pagination",
           type: "bullets",
-          clickable: true
+          clickable: true,
         },
         thumbs: {
-          swiper: testimonialsThumb
-        }
+          swiper: testimonialsThumb,
+        },
       });
 
-      testimonialsCarousel.controller.control = testimonialsMeta;
-      testimonialsMeta.controller.control = testimonialsCarousel;
+      setTimeout(() => {
+        if (testimonialsMeta) {
+          testimonialsCarousel.controller.control = testimonialsMeta;
+        }
+        testimonialsMeta.controller.control = testimonialsCarousel;
+      }, 1000);
     }
 
     if ($(".circle-progress").length) {
